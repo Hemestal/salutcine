@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  mer. 02 déc. 2020 à 16:34
+-- Généré le :  mer. 02 déc. 2020 à 21:40
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -35,59 +35,17 @@ CREATE TABLE IF NOT EXISTS `cinema` (
   `H_Ouverture` time NOT NULL,
   `H_Fermeture` time NOT NULL,
   PRIMARY KEY (`IdCinema`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Structure de la table `film`
+-- Déchargement des données de la table `cinema`
 --
 
-DROP TABLE IF EXISTS `film`;
-CREATE TABLE IF NOT EXISTS `film` (
-  `IdFilm` int(11) NOT NULL,
-  `Titre` varchar(50) NOT NULL,
-  `Durée` time NOT NULL,
-  `Langue` varchar(50) NOT NULL,
-  `SousTitre` varchar(50) DEFAULT NULL,
-  `Realisateur` varchar(50) NOT NULL,
-  `Acteur` varchar(50) NOT NULL,
-  `MinAge` int(11) NOT NULL,
-  PRIMARY KEY (`IdFilm`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `seance`
---
-
-DROP TABLE IF EXISTS `seance`;
-CREATE TABLE IF NOT EXISTS `seance` (
-  `IdSeance` int(11) NOT NULL AUTO_INCREMENT,
-  `IdCinema` int(11) NOT NULL,
-  `IdFilm` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `Heure` time NOT NULL,
-  `Salle` int(11) NOT NULL,
-  PRIMARY KEY (`IdSeance`),
-  KEY `IdCinema` (`IdCinema`),
-  KEY `IdFilm` (`IdFilm`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `IdUser` int(11) NOT NULL AUTO_INCREMENT,
-  `Login` varchar(50) NOT NULL,
-  `mdp` varchar(100) NOT NULL,
-  PRIMARY KEY (`IdUser`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `cinema` (`IdCinema`, `Ville`, `H_Ouverture`, `H_Fermeture`) VALUES
+(1, 'Serris', '08:00:00', '23:30:00'),
+(2, 'Villejuif', '07:30:00', '00:00:00'),
+(3, 'Toulouse', '09:00:00', '22:30:00'),
+(4, 'Marseille', '07:15:00', '23:45:00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
