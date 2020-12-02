@@ -7,17 +7,29 @@
     <link rel="shortcut icon" type="image/png" href="logo2.png"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark " style="background-color: #C8AD7F;">
+    <!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #C8AD7F;">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
+          <!-- Début home -->
             <li class="nav-item">
                   <a class="navbar-brand nav-link" href="index.html">
     <img src="logo2.png" width="30" height="30" alt="" loading="lazy">Home
   </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="afficher.html">Box Office</a>
-            </li>
+            <!-- Fin Home -->
+            <!-- Début box office dropdown -->
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Box Office
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="serris.html">Serris</a>
+          <a class="dropdown-item" href="villejuif.html">Villejuif</a>
+          <a class="dropdown-item" href="marseille.html">Marseille</a>
+          <a class="dropdown-item" href="toulouse.html">Toulouse</a>
+      </li>
+      <!-- Fin box office dropdown -->
         </ul>
     </div>
     <div class="mx-auto order-0">
@@ -26,14 +38,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
+    <!-- Début login-->
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="connecter.html">🎞Login</a>
             </li>
         </ul>
     </div>
-</nav>
+    </nav>
+    <!-- Fin login-->
 <div class="container">
      <div class="section-heading text-center mb-4">
         <h1 class="text-center">Add a movie</h1>

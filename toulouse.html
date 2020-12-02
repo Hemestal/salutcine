@@ -7,19 +7,19 @@
     <link rel="shortcut icon" type="image/png" href="logo2.png"/>
 </head>
 <body>
-    <!-- navbar -->
+	<!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #C8AD7F;">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
           <!-- Début home -->
-            <li class="nav-item active">
+            <li class="nav-item">
                   <a class="navbar-brand nav-link" href="index.html">
     <img src="logo2.png" width="30" height="30" alt="" loading="lazy">Home
   </a>
             </li>
             <!-- Fin Home -->
             <!-- Début box office dropdown -->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Box Office
         </a>
@@ -46,13 +46,16 @@
             </li>
         </ul>
     </div>
-    </nav>
     <!-- Fin login-->
+</nav>
 
 <main class="container-fluid mt-5" style="background-color: #EFEFEF;">
 	<div class="container px-3" style="background-color: white;">
 		<div class="section-heading text-center mb-5 pt-5">
-    <h1>Box-Office</h1>
+    <h1>Box-Office Toulouse</h1><!-- Titre-->
+</div>
+<div class="container text-center mb-3 pt-3">
+    <p>Opening:9AM Closing:10:30PM</p><!-- Horaire-->
 </div>
 <!-- box films -->
 <div class="container">
@@ -96,8 +99,6 @@
   </div>
 </div>
 	</div>
-<!-- Button trigger modal -->
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -110,8 +111,27 @@
       </div>
       <div class="modal-body">
         <form>
-        	
+          <p>Select a date:</p>
+
+        	<div>
+              <input type="radio" id="morning" name="drone" value="morning" checked>
+                  <label for="huey">Morning</label>
+          </div>
+
+          <div>
+              <input type="radio" id="afternoon" name="drone" value="afternoon">
+              <label for="dewey">Afternoon</label>
+          </div>
+
+          <div>
+              <input type="radio" id="night" name="drone" value="night">
+              <label for="louie">Night</label>
+          </div>
         </form>
+      </div>
+      <div class="form-group">
+          <label for="title">Number of Tickets</label>
+          <input type="number" id="tentacles" name="age" class="form-control form-control-lg" min="1" max="20">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
