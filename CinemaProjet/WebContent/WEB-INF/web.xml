@@ -17,6 +17,10 @@
   <servlet-name>AjoutSeanceServlet</servlet-name>
   <servlet-class>com.CinemaProjet.AjoutSeanceServlet</servlet-class>
   </servlet>
+   <servlet>
+  <servlet-name>loginServlet</servlet-name>
+  <servlet-class>com.CinemaProjet.loginServlet</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>MaServlet</servlet-name>
@@ -30,6 +34,9 @@
   	<servlet-name>AjoutSeanceServlet</servlet-name>
   	<url-pattern>/ajoutsc</url-pattern>
   </servlet-mapping>
-  
+    <servlet-mapping>
+  	<servlet-name>loginServlet</servlet-name>
+  	<url-pattern>/ajoutlog</url-pattern>
+  </servlet-mapping>
   
 </web-app>
