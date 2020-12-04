@@ -7,6 +7,9 @@
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
+create database if not exists salutcine;
+use salutcine;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -20,7 +23,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de données :  `salutcine`
---
+
 
 -- --------------------------------------------------------
 
