@@ -50,11 +50,11 @@ public class loginServlet extends HttpServlet {
 		System.out.println(user);
 		System.out.println(password);
 		String succes = "0";
-		String url = "jdbc:mysql://localhost:3306/cinema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3308/salutcine?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		try {
 			// 1 Connection
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection myConn = DriverManager.getConnection(url,"root","admin");
+			Connection myConn = DriverManager.getConnection(url,"root","");
 			// 2 Statement
 			PreparedStatement myStm= myConn.prepareStatement("SELECT * FROM user where Login=? AND mdp=?;");
 			myStm.setString(1, user);
@@ -79,6 +79,7 @@ public class loginServlet extends HttpServlet {
 			System.out.println(succes);
 			if (succes == "1") {
 				out.print("<a href='http://localhost:8080/CinemaProjet/addFilm.jsp'> Acceder à l'interface d'ajout</a><br>");
+			    response.sendRedirect("addFilm.jsp");
 			}
 		}catch(Exception e){
 			e.printStackTrace();

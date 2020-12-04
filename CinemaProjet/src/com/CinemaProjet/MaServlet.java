@@ -18,7 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 public class MaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-       
+	private static final String DEBUTDIV="<div class=\"container\"><div class=\"row m-auto\">";
+	private static final String FINDIV="</div></div>";
+	private static final String DEBUTDIV2="<div class=\"col-sm border-3 rounded p-5 m-5 text-center\" style=\"max-width:450px; min-width:350px\">";
+	private static final String FINDIV2="</div>";
+	private static final String BOOSTRAP="<link rel=\"stylesheet\" type=\"text/css\" href=\"bootstrap.css\">";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,7 +35,11 @@ public class MaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
+		
+
+
+		
 	}
 
 	/**
@@ -43,20 +51,23 @@ public class MaServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String ville = request.getParameter("ville");
 		System.out.println(ville);
-		String url = "jdbc:mysql://localhost:3306/cinema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3308/salutcine?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		try {
 			// 1 Connection
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection myConn = DriverManager.getConnection(url,"root","admin");
+			Connection myConn = DriverManager.getConnection(url,"root","");
 			// 2 Statement
 			Statement myStm= myConn.createStatement();
 			// Query 
-			ResultSet myRes = myStm.executeQuery("SELECT Titre, Date, Heure, Durée ,Salle, Langue, SousTitre,Realisateur, Acteur1,Acteur2,Acteur3, MinAge FROM cinema INNER JOIN seance ON cinema.IdCinema = seance.IdCinema INNER JOIN film ON seance.IdFilm = film.IdFilm WHERE cinema.Ville ='"+ville+ "';");
+			ResultSet myRes = myStm.executeQuery("SELECT Titre, Date, Heure, Durée ,Salle, Langue, MinAge FROM cinema INNER JOIN seance ON cinema.IdCinema = seance.IdCinema INNER JOIN film ON seance.IdFilm = film.IdFilm WHERE cinema.Ville ='"+ville+ "';");
 			// Process
 			System.out.println(myRes);
+			out.print(BOOSTRAP);
+			out.print(DEBUTDIV);
 			while(myRes.next()) {
-				out.print("<p>"+ville + "<br>" +"Titre : "+ myRes.getString("Titre")+"<br>" +"Date : "+ myRes.getString("Date")+"<br>" +"Durée : "+ myRes.getString("Durée")+"<br>" + "Salle : "+ myRes.getString("Salle")+ "<br>" +"Langue : "+ myRes.getString("Langue")+ "<br>" +"Sous-titre : "+ myRes.getString("SousTitre")+"<br>" +"Réalisateur: "+ myRes.getString("Realisateur")+"<br>Acteurs :<br> "+myRes.getString("Acteur1")+"<br>" +myRes.getString("Acteur2")+"<br>" +myRes.getString("Acteur3")+"<br>" +"Age minimum : "+ myRes.getString("MinAge")+"</p>");
+				out.print(DEBUTDIV2+"<p>"+ville + "<p></p>" +"titre : "+ myRes.getString("Titre")+"<p></p>" +"date : "+ myRes.getString("Date")+"<p></p>" +"durée : "+ myRes.getString("Durée")+"<p></p>" + "salle : "+ myRes.getString("Salle")+ "<p></p>" +"Langue : "+ myRes.getString("Langue")+ "<p></p>" +"Age minimum : "+ myRes.getString("MinAge")+"</p>"+FINDIV2);
 			}
+			out.print(FINDIV);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -50,11 +50,11 @@ public class AjoutSeanceServlet extends HttpServlet {
 		String salle = request.getParameter("salle");
 
 		
-		String url = "jdbc:mysql://localhost:3306/cinema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3308/salutcine?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		try {
 			// 1 Connection
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection myConn = DriverManager.getConnection(url,"root","admin");
+			Connection myConn = DriverManager.getConnection(url,"root","");
 			// 2 Statement
 			Statement myStm= myConn.createStatement();
 			// Query 
