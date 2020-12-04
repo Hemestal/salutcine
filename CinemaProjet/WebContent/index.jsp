@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Acuueil JSP</title>
+<title>Accueil</title>
 </head>
 <body>
 	<h1>Accueil</h1>
-	<a href="http://localhost:8080/CinemaProjet/villeCinema.jsp"> Scéances par villes (étape 2)</a>
+	<a href="http://localhost:8080/CinemaProjet/addFilm.jsp"> Ajout de film et programmation</a><br>
+	<a href="http://localhost:8080/CinemaProjet/villeCinema.jsp"> Scéances par villes (étape 2 et 3)</a>
 </body>
 </html>

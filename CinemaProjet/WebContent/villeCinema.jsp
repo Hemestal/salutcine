@@ -10,19 +10,19 @@
 <title>Ciné par ville</title>
 </head>
 <body>
-
- <h1>Cinema par ville</h1>
- <form action="MaServlet" method="post" target ="hiddenFrame">
- Ville :  
-<select  name="ville" size="4">
-  <option value="Villejuif">Villejuif</option>
-  <option value="Toulouse">Toulouse</option>
-  <option value="Marseille">Marseille</option>
-  <option value="Serris">Serris</option>
-</select> <br>
- 
- <input type="submit" value="submit">
- </form><br>
- <iframe name="hiddenFrame" ></iframe>
+	<header><a href ="http://localhost:8080/CinemaProjet/">Accueil</a></header>
+	 <h1>Cinema par ville</h1>
+	 <form action="MaServlet" method="post" target ="hiddenFrame">
+	 Ville :  
+	<select  name="ville" size="4">
+	  <option value="Villejuif">Villejuif</option>
+	  <option value="Toulouse">Toulouse</option>
+	  <option value="Marseille">Marseille</option>
+	  <option value="Serris">Serris</option>
+	</select> <br>
+	 
+	 <input type="submit" value="Rechercher">
+	 </form><br>
+	 <iframe name="hiddenFrame" ></iframe>
 </body>
 </html>

@@ -2,8 +2,10 @@ package com.CinemaProjet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MaServlet
+ * Servlet implementation class AjoutSeanceServlet
  */
-@WebServlet("/MaServlet")
-public class MaServlet extends HttpServlet {
-	
+@WebServlet("/AjoutSeanceServlet")
+public class AjoutSeanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MaServlet() {
+    public AjoutSeanceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +32,8 @@ public class MaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -42,7 +44,12 @@ public class MaServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String ville = request.getParameter("ville");
-		System.out.println(ville);
+		String film = request.getParameter("film");
+		String date = request.getParameter("date");
+		String heure = request.getParameter("heure");
+		String salle = request.getParameter("salle");
+
+		
 		String url = "jdbc:mysql://localhost:3306/cinema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		try {
 			// 1 Connection
@@ -51,12 +58,26 @@ public class MaServlet extends HttpServlet {
 			// 2 Statement
 			Statement myStm= myConn.createStatement();
 			// Query 
-			ResultSet myRes = myStm.executeQuery("SELECT Titre, Date, Heure, Durée ,Salle, Langue, SousTitre,Realisateur, Acteur1,Acteur2,Acteur3, MinAge FROM cinema INNER JOIN seance ON cinema.IdCinema = seance.IdCinema INNER JOIN film ON seance.IdFilm = film.IdFilm WHERE cinema.Ville ='"+ville+ "';");
-			// Process
-			System.out.println(myRes);
+			ResultSet myRes = myStm.executeQuery("SELECT * FROM cinema WHERE Ville ='"+ville+"';");
+			String cineID="0";
 			while(myRes.next()) {
-				out.print("<p>"+ville + "<br>" +"Titre : "+ myRes.getString("Titre")+"<br>" +"Date : "+ myRes.getString("Date")+"<br>" +"Durée : "+ myRes.getString("Durée")+"<br>" + "Salle : "+ myRes.getString("Salle")+ "<br>" +"Langue : "+ myRes.getString("Langue")+ "<br>" +"Sous-titre : "+ myRes.getString("SousTitre")+"<br>" +"Réalisateur: "+ myRes.getString("Realisateur")+"<br>Acteurs :<br> "+myRes.getString("Acteur1")+"<br>" +myRes.getString("Acteur2")+"<br>" +myRes.getString("Acteur3")+"<br>" +"Age minimum : "+ myRes.getString("MinAge")+"</p>");
+				cineID = myRes.getString("IdCinema");
+				System.out.println(cineID);
 			}
+			
+			ResultSet myRes2 = myStm.executeQuery("SELECT * FROM film WHERE Titre ='"+film+"';");
+			String filmID="0";
+			while (myRes2.next()) {
+				filmID = myRes2.getString("IdFilm");
+				System.out.println(filmID);
+			}
+			System.out.println(cineID);
+			System.out.println(filmID);
+
+			myStm.executeUpdate("INSERT INTO seance (IdCinema, IdFilm, Date, Heure, Salle) VALUES ('"+cineID+"', '"+filmID+"', '"+date+"', '"+heure+"', '"+salle+"');");
+			
+			out.print("<p>Séance ajoutée</p>");
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}

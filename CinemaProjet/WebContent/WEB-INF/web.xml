@@ -9,10 +9,27 @@
   <servlet-name>MaServlet</servlet-name>
   <servlet-class>com.CinemaProjet.MaServlet</servlet-class>
   </servlet>
+  <servlet>
+  <servlet-name>AjoutFilmServlet</servlet-name>
+  <servlet-class>com.CinemaProjet.AjoutFilmServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>AjoutSeanceServlet</servlet-name>
+  <servlet-class>com.CinemaProjet.AjoutSeanceServlet</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>MaServlet</servlet-name>
   	<url-pattern>/listfm</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AjoutFilmServlet</servlet-name>
+  	<url-pattern>/ajoutf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AjoutSeanceServlet</servlet-name>
+  	<url-pattern>/ajoutsc</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
